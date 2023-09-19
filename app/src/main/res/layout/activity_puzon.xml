@@ -27,7 +27,7 @@
         android:layout_height="wrap_content" />
 
     <GridLayout
-        android:padding="25dp"
+        android:padding="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
@@ -35,19 +35,19 @@
             android:layout_columnWeight="1"
             android:textSize="100sp"
             android:textAlignment="center"
-            android:text="0"/>
+            android:text="-"/>
         <TextView
             android:id="@+id/result2"
             android:layout_columnWeight="1"
             android:textSize="100sp"
             android:textAlignment="center"
-            android:text="0"/>
+            android:text="-"/>
         <TextView
             android:id="@+id/result3"
             android:layout_columnWeight="1"
             android:textSize="100sp"
             android:textAlignment="center"
-            android:text="0"/>
+            android:text="-"/>
     </GridLayout>
 
     <GridLayout
@@ -57,28 +57,40 @@
         <GridLayout
             android:layout_height="wrap_content"
             android:layout_width="wrap_content">
-            <TextView
+            <EditText
+                android:inputType="number"
+                android:id="@+id/userBet1"
                 android:layout_columnWeight="1"
-                android:textSize="50sp"
+                android:textSize="40sp"
                 android:paddingHorizontal="10dp"
                 android:textAlignment="center"
-                android:text="0"/>
-            <TextView
+                android:text="-"/>
+
+            <EditText
+                android:id="@+id/userBet2"
+                android:layout_width="wrap_content"
                 android:layout_columnWeight="1"
-                android:textSize="50sp"
+                android:inputType="number"
+                android:paddingHorizontal="10dp"
+                android:text="-"
+                android:textAlignment="center"
+                android:textSize="40sp" />
+            <EditText
+                android:id="@+id/userBet3"
+                android:inputType="number"
+                android:layout_columnWeight="1"
+                android:textSize="40sp"
                 android:paddingHorizontal="10dp"
                 android:textAlignment="center"
-                android:text="0"/>
-            <TextView
-                android:layout_columnWeight="1"
-                android:textSize="50sp"
-                android:paddingHorizontal="10dp"
-                android:textAlignment="center"
-                android:text="0"/>
+                android:text="-"/>
         </GridLayout>
         <EditText
+            android:id="@+id/userBetAmt"
+            android:inputType="number"
+            android:layout_marginLeft="10dp"
             android:layout_columnWeight="1"
             android:textSize="40sp"
+            android:text="-"
             />
     </GridLayout>
     <GridLayout
@@ -86,12 +98,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
+            android:id="@+id/multiplier"
             android:layout_columnWeight="1"
             android:textSize="50sp"
             android:paddingHorizontal="10dp"
             android:textAlignment="center"
-            android:text="0"/>
+            android:text="2"/>
         <TextView
+            android:id="@+id/remainingMoney"
             android:layout_marginLeft="60dp"
             android:textAlignment="center"
             android:textSize="50sp"
@@ -101,9 +115,10 @@
         </TextView>
     </GridLayout>
     <TextView
-        android:textSize="40sp"
+        android:id="@+id/win_or_lose"
+        android:textSize="50sp"
         android:textAlignment="center"
-        android:text="Result hehe"
+        android:text="-"
         android:padding="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -115,13 +130,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:textSize="20sp"
+            android:id="@+id/bet"
+            android:textSize="30sp"
             android:text="SET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></Button>
         <Button
+            android:id="@+id/reset"
             android:text="RESET"
-            android:textSize="20sp"
+            android:textSize="30sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></Button>
     </LinearLayout>
