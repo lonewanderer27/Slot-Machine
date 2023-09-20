@@ -10,7 +10,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:padding="20dp"
+        android:textSize="20sp"
         android:textAlignment="center"
         android:text="Puzon, Adriane James J."
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,7 +21,7 @@
 
     <TextView
         android:text="SLOT MACHINE"
-        android:textSize="40sp"
+        android:textSize="50sp"
         android:padding="10dp"
         android:textAlignment="center"
         android:layout_width="match_parent"
@@ -140,6 +141,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></Button>
         <Button
+            android:layout_marginTop="10dp"
             android:id="@+id/reset"
             android:text="RESET"
             android:textSize="30sp"
