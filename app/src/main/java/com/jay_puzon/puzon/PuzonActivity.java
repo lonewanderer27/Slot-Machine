@@ -217,7 +217,7 @@ public class PuzonActivity extends AppCompatActivity {
         }
         if (passedChecks == false) {
             Log.e("Bets", "Did not passed!");
-            Toast.makeText(getBaseContext(), "Invalid bet. Enter numbers 1-9 only", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getBaseContext(), "Invalid bet. Enter numbers 1-9 only", Toast.LENGTH_SHORT).show();
             return passedChecks;
         }
 
@@ -225,7 +225,7 @@ public class PuzonActivity extends AppCompatActivity {
         if (userBetAmt <= 0) {
             passedChecks = false;
             Log.e("BetAmount", "Did not passed!");
-            Toast.makeText(getBaseContext(), "Please enter a bet amount", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getBaseContext(), "Please enter a bet amount", Toast.LENGTH_SHORT).show();
             UserBetAmt.setError("Enter a bet amount");
             return passedChecks;
         }
@@ -234,7 +234,7 @@ public class PuzonActivity extends AppCompatActivity {
         if (userBetAmt > remainingMoney) {
             passedChecks = false;
             Log.e("BetAmount", "Insufficient balance!");
-            Toast.makeText(getBaseContext(), "Insufficient balance", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getBaseContext(), "Insufficient balance", Toast.LENGTH_SHORT).show();
             UserBet1.setError("Insufficient balance");
             return passedChecks;
         }
