@@ -233,7 +233,7 @@ public class PuzonActivity extends AppCompatActivity {
         // check if the remaining balance is enough for the bet amount
         if (userBetAmt > remainingMoney) {
             passedChecks = false;
-            Log.e("BetAmount", "Insufficient balance!");
+            Log.e("BetAmount", "Insufficient balance! Please lower your bet amount");
 //            Toast.makeText(getBaseContext(), "Insufficient balance", Toast.LENGTH_SHORT).show();
             UserBet1.setError("Insufficient balance");
             return passedChecks;
