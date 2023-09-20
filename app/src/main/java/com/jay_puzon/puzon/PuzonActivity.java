@@ -232,8 +232,6 @@ public class PuzonActivity extends AppCompatActivity {
             // generate winning numbers
             genWinningNums();
 
-            remainingMoney = remainingMoney - userBetAmt;
-
             // compare if the winning numbers is equivalent to the user's bet
             if (resultNums[0] == userBet1 && resultNums[1] == userBet2 && resultNums[2] == userBet3) {
                 // set game state
@@ -345,9 +343,9 @@ public class PuzonActivity extends AppCompatActivity {
             } else {
                 // otherwise, generate random numbers
                 resultNums = new int[]{
-                        rd.nextInt(9),
-                        rd.nextInt(9),
-                        rd.nextInt(9)
+                        Numbers[rd.nextInt(Numbers.length-1)],
+                        Numbers[rd.nextInt(Numbers.length-1)],
+                        Numbers[rd.nextInt(Numbers.length-1)],
                 };
             }
 
@@ -358,4 +356,8 @@ public class PuzonActivity extends AppCompatActivity {
             Log.e("genWinningNums Error: ", e.toString());
         }
     }
+
+    int[] Numbers = {
+            1, 2, 3, 4, 5, 6, 7, 8, 9
+    };
 }
