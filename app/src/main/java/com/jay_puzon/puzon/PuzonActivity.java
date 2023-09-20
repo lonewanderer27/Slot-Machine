@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import java.util.Random;
 
+import javax.xml.transform.Result;
+
 enum GameState {
     IDLE,
     BETTING,
@@ -158,14 +160,24 @@ public class PuzonActivity extends AppCompatActivity {
         // clear the bet number textboxes
         // but only clear them if the user had not entered any bet yet
         // otherwise, do not clear them
-        if (!UserBet1.getText().equals("0") && !UserBet1.getText().equals("-")) {
-            UserBet1.setText("0");
+
+        if (!UserBet1.getText().equals("0") ||
+                !UserBet1.getText().equals("-")) {
+            if (userBet1 != 0) {
+                UserBet1.setText("0");
+            }
         }
-        if (!UserBet2.getText().equals("0") && !UserBet2.getText().equals("-")) {
-            UserBet2.setText("0");
+        if (!UserBet2.getText().equals("0") ||
+                !UserBet2.getText().equals("-")) {
+            if (userBet2 != 0) {
+                UserBet2.setText("0");
+            }
         }
-        if (!UserBet3.getText().equals("0") && !UserBet3.getText().equals("-")) {
-            UserBet3.setText("0");
+        if (!UserBet3.getText().equals("0") ||
+                !UserBet3.getText().equals("-")) {
+            if (userBet3 != 0) {
+                UserBet3.setText("0");
+            }
         }
 
         UserBet1.setEnabled(true);
@@ -188,28 +200,26 @@ public class PuzonActivity extends AppCompatActivity {
         Log.i("Bet2", userBet2+"");
         Log.i("Bet3", userBet3+"");
 
-        if (userBet1 == 0) {
+        if (userBet1 == 0 || userBet1 > 9) {
             passedChecks = false;
             Log.e("Bet1", "Did not passed!");
         }
-        if (userBet2 == 0) {
+        if (userBet2 == 0 || userBet2 > 9) {
             passedChecks = false;
             Log.e("Bet2", "Did not passed!");
-
         }
-        if (userBet3 == 0) {
+        if (userBet3 == 0 || userBet3 > 9) {
             passedChecks = false;
             Log.e("Bet3", "Did not passed!");
-
         }
         if (passedChecks == false) {
             Log.e("Bets", "Did not passed!");
-            Toast.makeText(getBaseContext(), "Please complete your bet", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "Invalid bet. Enter numbers 1-9 only", Toast.LENGTH_SHORT).show();
             return passedChecks;
         }
 
         // check if the user had entered a bet amt
-        if (userBetAmt == 0) {
+        if (userBetAmt <= 0) {
             passedChecks = false;
             Log.e("BetAmount", "Did not passed!");
             Toast.makeText(getBaseContext(), "Please enter a bet amount", Toast.LENGTH_SHORT).show();
@@ -238,11 +248,11 @@ public class PuzonActivity extends AppCompatActivity {
                 state = GameState.IDLE;
                 winOrLose = WinOrLose.WIN;
 
-                // increase multiplier
-                multiplier++;
-
                 // increase money
                 remainingMoney = remainingMoney + (userBetAmt * multiplier);
+
+                // increase multiplier
+                multiplier++;
 
                 Log.i("Remaining Money", remainingMoney+"");
 
@@ -278,6 +288,11 @@ public class PuzonActivity extends AppCompatActivity {
         UserBet2.setEnabled(false);
         UserBet3.setEnabled(false);
         UserBetAmt.setEnabled(false);
+
+        // reset if the remaining money is 0
+        if (remainingMoney == 0) {
+            Reset();
+        }
     }
 
     void Reset() {
@@ -309,17 +324,20 @@ public class PuzonActivity extends AppCompatActivity {
              multiplier = 2;
 
              // reset the ui
-             Multiplier.setText("2");
-             UserBet1.setText("-");
+             Multiplier.setText(multiplier+ "x");
+             UserBet1.setText("0");
              UserBet1.setEnabled(false);
-             UserBet2.setText("-");
+             UserBet2.setText("0");
              UserBet2.setEnabled(false);
-             UserBet3.setText("-");
+             UserBet3.setText("0");
              UserBet3.setEnabled(false);
              UserBetAmt.setText("0");
              UserBetAmt.setEnabled(false);
+             ResultNum1.setText("-");
+             ResultNum2.setText("-");
+             ResultNum3.setText("-");
              RemainingMoney.setText(remainingMoney+"");
-             WINORLOSE.setText("");
+             WINORLOSE.setText("-");
          } catch (Exception e) {
              Log.e("RESET Error", e.toString());
          }
@@ -329,7 +347,7 @@ public class PuzonActivity extends AppCompatActivity {
         try {
             Random rd = new Random();
             // generate luck
-            int luck = rd.nextInt(4);
+            int luck = rd.nextInt(5);
             Log.i("Luck", luck+"");
 
             // check if luck is 4
